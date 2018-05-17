@@ -1,0 +1,7 @@
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug Tracker.csprojResolveAssemblyReference.cache
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug_Tracker.Form1.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug_Tracker.Views.AboutUs.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug_Tracker.Views.Dashboard.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug_Tracker.Views.Login.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug_Tracker.Views.Register.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug-Tracking-System-master\Bug Tracker\obj\Debug\Bug Tracker.csproj.GenerateResource.cache
