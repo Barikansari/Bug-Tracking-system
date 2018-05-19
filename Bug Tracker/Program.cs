@@ -9,6 +9,10 @@ namespace Bug_Tracker
 {
     static class Program
     {
+
+        public static int adminId = 0;
+        public static int userId = 0;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

@@ -20,12 +20,73 @@ namespace Bug_Tracker.DAO
 
         public List<Programmer> GetAll()
         {
-            throw new NotImplementedException();
+            conn.Open();
+            List<Programmer> list = new List<Programmer>();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "SELECT * FROM tbl_programmer;";
+                sql.Prepare();
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        Programmer p = new Programmer
+                        {
+                            ProgrammerId = Convert.ToInt32(reader["programmer_id"]),
+                            FullName = reader["full_name"].ToString(),
+                            Username = reader["username"].ToString(),
+                            Password = reader["password"].ToString()
+                        };
+
+                        list.Add(p);
+                    }
+                }
+            } catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return list;
         }
 
         public Programmer GetById(int id)
         {
-            throw new NotImplementedException();
+            conn.Open();
+            Programmer p = null;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "SELECT * FROM tbl_programmer WHERE programmer_id=@programmerId;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@programmerId", id);
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        p = new Programmer
+                        {
+                            ProgrammerId = Convert.ToInt32(reader["programmer_id"]),
+                            FullName = reader["full_name"].ToString(),
+                            Username = reader["username"].ToString(),
+                            Password = reader["password"].ToString()
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            } finally
+            {
+                conn.Close();
+            }
+
+            return p;
         }
 
         public void Insert(Programmer t)

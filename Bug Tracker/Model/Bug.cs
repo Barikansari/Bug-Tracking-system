@@ -18,6 +18,8 @@ namespace Bug_Tracker.Model
         public int StartLine { get; set; }
         public int EndLine { get; set; }
         public int ProgrammerId { get; set; }
-        public bool Status { get; set; }
+        public string Status { get; set; }
+        public Image Images { get; set; }
+        public Code Codes { get; set; }
     }
 }

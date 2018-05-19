@@ -11,7 +11,7 @@ namespace Bug_Tracker.Model
     /// </summary>
     class Code
     {
-        public string CodeId { get; set; }
+        public int CodeId { get; set; }
         public string CodeFilePath { get; set; }
         public string CodeFileName { get; set; }
         public string ProgrammingLanguage { get; set; }

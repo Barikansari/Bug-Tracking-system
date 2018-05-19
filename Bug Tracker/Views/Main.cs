@@ -21,6 +21,7 @@ namespace Bug_Tracker.Views
         private string imageName;
         private string ImageName;
         private string imageSource;
+        private string imgn;
         public Main()
         {
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -198,6 +199,7 @@ namespace Bug_Tracker.Views
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
                 imageName = openFileDialog.FileName;
+                imgn = Path.GetFileName(openFileDialog.FileName);
                 ImageName = openFileDialog.SafeFileName;
                 pictureBox1.Image = new Bitmap(imageName);
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -214,7 +216,8 @@ namespace Bug_Tracker.Views
                 MethodName = textBox3.Text,
                 StartLine = Convert.ToInt16(textBox4.Text),
                 EndLine = Convert.ToInt16(textBox5.Text),
-                ProgrammerId = Login.userId
+                ProgrammerId = Login.userId,
+                Status = "0"
             };
 
             try
@@ -233,7 +236,7 @@ namespace Bug_Tracker.Views
             Bug_Tracker.Model.Image image = new Bug_Tracker.Model.Image
             {
                 ImagePath = "code_image",
-                ImageName = imageName,
+                ImageName = imgn,
                 BugId = bug.BugId
             };
 
@@ -283,8 +286,19 @@ namespace Bug_Tracker.Views
                 Console.WriteLine(ex.Message);
             }
 
+            MessageBox.Show("Added");
 
             //Bug bug = new Bug { BugId = }
+        }
+
+        private void toolStripSeparator5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allBugsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new Bugs().Show();
         }
     }
 }
