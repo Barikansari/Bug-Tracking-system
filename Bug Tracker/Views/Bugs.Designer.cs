@@ -40,17 +40,19 @@ namespace Bug_Tracker.Views
             this.label1 = new System.Windows.Forms.Label();
             this.panelAssigned = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.panelBugs.SuspendLayout();
             this.panelAssigned.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBugs
             // 
-            this.panelBugs.BackColor = System.Drawing.SystemColors.Window;
+            this.panelBugs.BackColor = System.Drawing.Color.LightGray;
             this.panelBugs.Controls.Add(this.label1);
             this.panelBugs.ForeColor = System.Drawing.SystemColors.Window;
-            this.panelBugs.Location = new System.Drawing.Point(2, 1);
+            this.panelBugs.Location = new System.Drawing.Point(12, 117);
             this.panelBugs.Name = "panelBugs";
             this.panelBugs.Size = new System.Drawing.Size(561, 567);
             this.panelBugs.TabIndex = 0;
@@ -68,11 +70,10 @@ namespace Bug_Tracker.Views
             // 
             // panelAssigned
             // 
-            this.panelAssigned.BackColor = System.Drawing.SystemColors.Window;
-            this.panelAssigned.Controls.Add(this.label3);
+            this.panelAssigned.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.panelAssigned.Controls.Add(this.label2);
             this.panelAssigned.ForeColor = System.Drawing.SystemColors.Window;
-            this.panelAssigned.Location = new System.Drawing.Point(569, 1);
+            this.panelAssigned.Location = new System.Drawing.Point(579, 117);
             this.panelAssigned.Name = "panelAssigned";
             this.panelAssigned.Size = new System.Drawing.Size(508, 567);
             this.panelAssigned.TabIndex = 1;
@@ -88,22 +89,35 @@ namespace Bug_Tracker.Views
             this.label2.TabIndex = 1;
             this.label2.Text = "Assigned work to you";
             // 
-            // label3
+            // panel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label3.Location = new System.Drawing.Point(99, 129);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(371, 24);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Hurrey! there is no any work assigned to yo";
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.panel1.Size = new System.Drawing.Size(1134, 100);
+            this.panel1.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(248, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(499, 55);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Bug Tracking System";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Bugs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1079, 564);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelAssigned);
             this.Controls.Add(this.panelBugs);
             this.Name = "Bugs";
@@ -113,7 +127,10 @@ namespace Bug_Tracker.Views
             this.panelBugs.PerformLayout();
             this.panelAssigned.ResumeLayout(false);
             this.panelAssigned.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -123,7 +140,8 @@ namespace Bug_Tracker.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelAssigned;
         private System.Windows.Forms.Label label2;
-        private Label label3;
+        private Panel panel1;
+        private Label label5;
 
 
         //private void loopPanel(List<Bug> list)

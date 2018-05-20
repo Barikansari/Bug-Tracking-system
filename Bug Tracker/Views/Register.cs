@@ -49,7 +49,7 @@ namespace Bug_Tracker.Views
             {
                 if (radioButton1.Checked)
                 {
-                    Programmer p = new Programmer { ProgrammerId = 0, FullName = name, Username = username, Password = password };
+                    ProjectDeveloper p = new ProjectDeveloper { ProgrammerId = 0, FullName = name, Username = username, Password = password };
                     try
                     {
                         new ProgrammerDAO().Insert(p);

@@ -26,7 +26,7 @@ namespace Bug_Tracker.Views
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
-            Bug_Tracker.Model.Admin admin = new Bug_Tracker.Model.Admin
+            Bug_Tracker.Model.ProjectAdmin admin = new Bug_Tracker.Model.ProjectAdmin
             {
                 CompanyName = companyName,
                 Username = username,

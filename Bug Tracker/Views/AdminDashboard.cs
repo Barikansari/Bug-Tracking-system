@@ -61,7 +61,7 @@ namespace Bug_Tracker.Views
         private void GetAllProgrammers()
         {
             ProgrammerDAO dao = new ProgrammerDAO();
-            List<Programmer> list = dao.GetAll();
+            List<ProjectDeveloper> list = dao.GetAll();
 
             foreach(var l in list)
             {
@@ -124,7 +124,7 @@ namespace Bug_Tracker.Views
 
             foreach (var l in list)
             {
-                Programmer p = programmerDAO.GetById(Convert.ToInt32(l.ProgrammerId));
+                ProjectDeveloper p = programmerDAO.GetById(Convert.ToInt32(l.ProgrammerId));
                 programmers.Add(p.ProgrammerId + "," + p.FullName);
             }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bug_Tracker.Model
 {
-    public class Admin
+    public class ProjectAdmin
     {
         public int? AdminId { get; set; }
         public string CompanyName { get; set; }

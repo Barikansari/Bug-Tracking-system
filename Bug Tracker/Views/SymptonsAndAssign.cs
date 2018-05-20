@@ -88,7 +88,7 @@ namespace Bug_Tracker.Views
             }
 
             ProgrammerDAO programmerDAO = new ProgrammerDAO();
-            List<Programmer> list = programmerDAO.GetAll();
+            List<ProjectDeveloper> list = programmerDAO.GetAll();
 
 
             foreach (var l in list)

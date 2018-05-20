@@ -43,6 +43,8 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -79,6 +81,7 @@
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
@@ -90,9 +93,10 @@
             this.fileMenu});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(1314, 24);
+            this.menuStrip.Size = new System.Drawing.Size(872, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
+            this.menuStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip_ItemClicked);
             // 
             // fileMenu
             // 
@@ -108,16 +112,19 @@
             this.fileMenu.Name = "fileMenu";
             this.fileMenu.Size = new System.Drawing.Size(37, 20);
             this.fileMenu.Text = "&File";
+            this.fileMenu.Click += new System.EventHandler(this.fileMenu_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator3.Click += new System.EventHandler(this.toolStripSeparator3_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator4.Click += new System.EventHandler(this.toolStripSeparator4_Click);
             // 
             // allBugsToolStripMenuItem
             // 
@@ -131,6 +138,7 @@
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
+            this.toolStripSeparator1.Click += new System.EventHandler(this.toolStripSeparator1_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -159,19 +167,26 @@
             this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 707);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1314, 22);
+            this.statusStrip.Size = new System.Drawing.Size(872, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
+            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // toolStripStatusLabel
             // 
             this.toolStripStatusLabel.Name = "toolStripStatusLabel";
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Status";
+            this.toolStripStatusLabel.Click += new System.EventHandler(this.toolStripStatusLabel_Click);
+            // 
+            // toolTip
+            // 
+            this.toolTip.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip_Popup);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.textBox7);
             this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.label10);
@@ -199,75 +214,108 @@
             this.panel1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1314, 683);
+            this.panel1.Size = new System.Drawing.Size(872, 683);
             this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.panel2.Size = new System.Drawing.Size(915, 100);
+            this.panel2.TabIndex = 24;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label11.Location = new System.Drawing.Point(179, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(499, 55);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Bug Tracking System";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(329, 301);
+            this.textBox7.Location = new System.Drawing.Point(317, 438);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
             this.textBox7.TabIndex = 23;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(112, 301);
+            this.textBox6.Location = new System.Drawing.Point(100, 438);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 22;
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.SystemColors.Window;
             this.label10.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label10.Location = new System.Drawing.Point(253, 304);
+            this.label10.Location = new System.Drawing.Point(241, 441);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(49, 13);
             this.label10.TabIndex = 21;
             this.label10.Text = "End Line";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.SystemColors.Window;
             this.label9.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label9.Location = new System.Drawing.Point(58, 304);
+            this.label9.Location = new System.Drawing.Point(46, 441);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 13);
             this.label9.TabIndex = 20;
             this.label9.Text = "Start line";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.SystemColors.Window;
             this.label8.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label8.Location = new System.Drawing.Point(58, 271);
+            this.label8.Location = new System.Drawing.Point(46, 408);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(57, 13);
             this.label8.TabIndex = 19;
             this.label8.Text = "Github link";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(185, 264);
+            this.textBox1.Location = new System.Drawing.Point(173, 401);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 20);
             this.textBox1.TabIndex = 18;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 34);
+            this.comboBox1.Location = new System.Drawing.Point(169, 171);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(248, 21);
             this.comboBox1.TabIndex = 17;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(3, 348);
+            this.button2.Location = new System.Drawing.Point(-9, 497);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 16;
@@ -277,21 +325,23 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 377);
+            this.pictureBox1.Location = new System.Drawing.Point(-9, 526);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(473, 253);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(494, 56);
+            this.label7.Location = new System.Drawing.Point(482, 193);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(183, 20);
             this.label7.TabIndex = 14;
             this.label7.Text = "Programming Language:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // fastColoredTextBox1
             // 
@@ -314,14 +364,15 @@
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
             this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 9.75F);
             this.fastColoredTextBox1.IsReplaceMode = false;
-            this.fastColoredTextBox1.Location = new System.Drawing.Point(482, 79);
+            this.fastColoredTextBox1.Location = new System.Drawing.Point(470, 216);
             this.fastColoredTextBox1.Name = "fastColoredTextBox1";
             this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
             this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
-            this.fastColoredTextBox1.Size = new System.Drawing.Size(796, 584);
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(430, 584);
             this.fastColoredTextBox1.TabIndex = 13;
             this.fastColoredTextBox1.Zoom = 100;
+            this.fastColoredTextBox1.Load += new System.EventHandler(this.fastColoredTextBox1_Load);
             this.fastColoredTextBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.fastColoredTextBox1_KeyUp);
             // 
             // button1
@@ -329,7 +380,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.Window;
-            this.button1.Location = new System.Drawing.Point(0, 636);
+            this.button1.Location = new System.Drawing.Point(-12, 785);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 36);
             this.button1.TabIndex = 12;
@@ -340,7 +391,7 @@
             // link
             // 
             this.link.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.link.Location = new System.Drawing.Point(12, 328);
+            this.link.Location = new System.Drawing.Point(0, 465);
             this.link.Name = "link";
             this.link.Size = new System.Drawing.Size(464, 17);
             this.link.TabIndex = 11;
@@ -351,34 +402,38 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(185, 215);
+            this.textBox5.Location = new System.Drawing.Point(173, 352);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(244, 26);
             this.textBox5.TabIndex = 10;
+            this.textBox5.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
             // 
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(184, 166);
+            this.textBox4.Location = new System.Drawing.Point(172, 303);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(244, 26);
             this.textBox4.TabIndex = 9;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(185, 121);
+            this.textBox3.Location = new System.Drawing.Point(173, 258);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(244, 26);
             this.textBox3.TabIndex = 8;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(185, 73);
+            this.textBox2.Location = new System.Drawing.Point(173, 210);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(244, 26);
             this.textBox2.TabIndex = 7;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label6
             // 
@@ -386,11 +441,12 @@
             this.label6.BackColor = System.Drawing.SystemColors.Window;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label6.Location = new System.Drawing.Point(57, 221);
+            this.label6.Location = new System.Drawing.Point(45, 358);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 20);
             this.label6.TabIndex = 5;
             this.label6.Text = "End line";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label5
             // 
@@ -398,11 +454,12 @@
             this.label5.BackColor = System.Drawing.SystemColors.Window;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label5.Location = new System.Drawing.Point(57, 172);
+            this.label5.Location = new System.Drawing.Point(45, 309);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(72, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Start line";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label4
             // 
@@ -410,11 +467,12 @@
             this.label4.BackColor = System.Drawing.SystemColors.Window;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label4.Location = new System.Drawing.Point(57, 127);
+            this.label4.Location = new System.Drawing.Point(45, 264);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(107, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Method name";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -422,11 +480,12 @@
             this.label3.BackColor = System.Drawing.SystemColors.Window;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label3.Location = new System.Drawing.Point(57, 79);
+            this.label3.Location = new System.Drawing.Point(45, 216);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Class name";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -434,22 +493,24 @@
             this.label2.BackColor = System.Drawing.SystemColors.Window;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.label2.Location = new System.Drawing.Point(57, 35);
+            this.label2.Location = new System.Drawing.Point(45, 172);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(102, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Project name";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(56, 0);
+            this.label1.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.label1.Location = new System.Drawing.Point(44, 127);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(246, 25);
+            this.label1.Size = new System.Drawing.Size(306, 25);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Explain your bug here....";
+            this.label1.Text = "Please Explain the bug here....";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // toolStrip1
             // 
@@ -457,12 +518,13 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripDropDownButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(1284, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(842, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.toolStrip1.Size = new System.Drawing.Size(30, 683);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripDropDownButton1
             // 
@@ -543,7 +605,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 729);
+            this.ClientSize = new System.Drawing.Size(872, 729);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip);
@@ -559,6 +621,8 @@
             this.statusStrip.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
@@ -616,6 +680,8 @@
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutUsToolStripMenuItem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label11;
     }
 }
 

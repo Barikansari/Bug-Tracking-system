@@ -69,7 +69,7 @@ namespace Bug_Tracker.DAO
             conn.Open();
             List<Fixer> list = new List<Fixer>();
             Fixer fixer = null;
-            Programmer programmer = null;
+            ProjectDeveloper programmer = null;
 
             try
             {
@@ -82,7 +82,7 @@ namespace Bug_Tracker.DAO
                     while (reader.Read())
                     {
                         fixer = new Fixer();
-                        programmer = new Programmer();
+                        programmer = new ProjectDeveloper();
 
                         fixer.BugId = Convert.ToInt32(reader["bug_id"]);
                         fixer.FixedDate = Convert.ToDateTime(reader["fixed_date"]);

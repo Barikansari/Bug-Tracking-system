@@ -89,13 +89,7 @@
     <Compile Include="DAO\SourceControlDAO.cs" />
     <Compile Include="DAO\TesterDAO.cs" />
     <Compile Include="DBConnection.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\ProjectAdmin.cs" />
     <Compile Include="Model\Assign.cs" />
     <Compile Include="Model\Bug.cs" />
     <Compile Include="Model\BugHistory.cs" />
@@ -103,7 +97,7 @@
     <Compile Include="Model\Code.cs" />
     <Compile Include="Model\Fixer.cs" />
     <Compile Include="Model\Image.cs" />
-    <Compile Include="Model\Programmer.cs" />
+    <Compile Include="Model\ProjectDeveloper.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ProjectProgrammer.cs" />
     <Compile Include="Model\SourceControl.cs" />
@@ -176,7 +170,9 @@
     <Compile Include="Views\SymptonsAndAssign.Designer.cs">
       <DependentUpon>SymptonsAndAssign.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\TesterDashboard.cs" />
+    <Compile Include="Views\TesterDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\TesterDashboard.Designer.cs">
       <DependentUpon>TesterDashboard.cs</DependentUpon>
     </Compile>
@@ -186,9 +182,6 @@
     <Compile Include="Views\UpdateBug.Designer.cs">
       <DependentUpon>UpdateBug.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
