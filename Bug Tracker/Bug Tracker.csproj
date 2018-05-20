@@ -180,7 +180,9 @@
     <Compile Include="Views\TesterDashboard.Designer.cs">
       <DependentUpon>TesterDashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UpdateBug.cs" />
+    <Compile Include="Views\UpdateBug.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Views\UpdateBug.Designer.cs">
       <DependentUpon>UpdateBug.cs</DependentUpon>
     </Compile>
