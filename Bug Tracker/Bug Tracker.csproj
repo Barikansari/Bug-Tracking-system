@@ -69,10 +69,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DAOImp\GenericDaoImp.cs" />
+    <Compile Include="bug_trackerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bug_trackerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Common\LoopPanel.cs" />
     <Compile Include="DAO\AdminDAO.cs" />
+    <Compile Include="DAO\AssignDAO.cs" />
     <Compile Include="DAO\BugDAO.cs" />
+    <Compile Include="DAO\BugInformationDAO.cs" />
     <Compile Include="DAO\CodeDAO.cs" />
+    <Compile Include="DAO\FixerDAO.cs" />
     <Compile Include="DAO\GenericDAO.cs" />
     <Compile Include="DAO\ImageDAO.cs" />
     <Compile Include="DAO\ProgrammerDAO.cs" />
@@ -132,6 +140,12 @@
     <Compile Include="Views\Bugs.Designer.cs">
       <DependentUpon>Bugs.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\BugStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\BugStatus.Designer.cs">
+      <DependentUpon>BugStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +169,20 @@
     </Compile>
     <Compile Include="Views\Register.Designer.cs">
       <DependentUpon>Register.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SymptonsAndAssign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SymptonsAndAssign.Designer.cs">
+      <DependentUpon>SymptonsAndAssign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TesterDashboard.cs" />
+    <Compile Include="Views\TesterDashboard.Designer.cs">
+      <DependentUpon>TesterDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UpdateBug.cs" />
+    <Compile Include="Views\UpdateBug.Designer.cs">
+      <DependentUpon>UpdateBug.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -184,6 +212,9 @@
     <EmbeddedResource Include="Views\Bugs.resx">
       <DependentUpon>Bugs.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\BugStatus.resx">
+      <DependentUpon>BugStatus.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -196,6 +227,26 @@
     <EmbeddedResource Include="Views\Register.resx">
       <DependentUpon>Register.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\SymptonsAndAssign.resx">
+      <DependentUpon>SymptonsAndAssign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TesterDashboard.resx">
+      <DependentUpon>TesterDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UpdateBug.resx">
+      <DependentUpon>UpdateBug.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="bug_trackerDataSet.xsc">
+      <DependentUpon>bug_trackerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bug_trackerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bug_trackerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bug_trackerDataSet.xss">
+      <DependentUpon>bug_trackerDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -228,12 +279,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\images\icons8-add-user-male-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\lllll.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\key.jpg" />

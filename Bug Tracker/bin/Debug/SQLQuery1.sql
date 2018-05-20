@@ -10,7 +10,8 @@ CREATE TABLE tbl_programmer (
 	CONSTRAINT pk_programmer_id PRIMARY KEY(programmer_id)
 );
 SP_HELP tbl_programmer;
-
+SELECT * FROM tbl_programmer;
+DELETE FROM tbl_programmer--done
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 CREATE TABLE tbl_tester (
@@ -34,7 +35,7 @@ SP_HELP tbl_code;
 ALTER TABLE tbl_code ADD bug_id INT;
 ALTER TABLE tbl_code ADD CONSTRAINT fk_code_bug_id FOREIGN KEY(bug_id) REFERENCES tbl_bug(bug_id);
 SELECT * FROM tbl_code;
-DELETE FROM tbl_code;
+DELETE FROM tbl_code;--done
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -56,8 +57,9 @@ SP_HELP tbl_bug;
 ALTER TABLE tbl_bug DROP CONSTRAINT fk_code_id;
 ALTER TABLE tbl_bug DROP COLUMN code_id;
 SELECT * FROM tbl_bug;
-DELETE FROM tbl_bug;
+DELETE FROM tbl_bug;--done
 SELECT * FROM tbl_bug;
+
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +74,8 @@ CREATE TABLE tbl_source_control
 	CONSTRAINT fk_bug_id FOREIGN KEY(bug_id) REFERENCES tbl_bug(bug_id)
 );
 SP_HELP tbl_source_control;
+SELECT * FROM tbl_source_control;
+DELETE FROM tbl_source_control;--done
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -84,8 +88,9 @@ CREATE TABLE tbl_image (
 	CONSTRAINT fk_image_bug_id FOREIGN KEY(bug_id) REFERENCES tbl_bug(bug_id)
 );
 SP_HELP tbl_image;
-
-DELETE FROM tbl_image;
+SELECT * FROM tbl_image;
+DELETE FROM tbl_image;--done
+insert into tbl_image values('code_image', 'Screenshot (7).png', 1106);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -100,6 +105,7 @@ CREATE TABLE tbl_fixer (
 );
 
 SP_HELP tbl_fixer;
+DELETE FROM tbl_fixer;--done
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -117,6 +123,9 @@ CREATE TABLE tbl_assign (
 );
 
 SP_HELP tbl_assign;
+ALTER TABLE tbl_assign DROP COLUMN deadline;
+SELECT * FROM tbl_assign;
+DELETE FROM tbl_assign;--done
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,6 +138,7 @@ CREATE TABLE tbl_bug_history (
 );
 
 SP_HELP tbl_bug_history;
+DELETE FROM tbl_bug_history;--done
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -142,6 +152,9 @@ CREATE TABLE tbl_bug_information(
 );
 
 SP_HELP tbl_bug_information;
+SELECT * FROM tbl_bug_information;
+delete from tbl_bug_information where bug_information_id = 4;
+DELETE FROM tbl_bug_information;--done
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -152,7 +165,7 @@ CREATE TABLE tbl_admin(
 	password VARCHAR(999) NOT NULL,
 	CONSTRAINT pk_admin_id PRIMARY KEY(admin_id)
 );
-
+DELETE FROM tbl_admin;--done
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -166,6 +179,7 @@ ALTER TABLE tbl_project ADD admin_id INT NOT NULL;
 ALTER TABLE tbl_project ADD CONSTRAINT fk_admin_id FOREIGN KEY(admin_id) REFERENCES tbl_admin (admin_id);
 
 SELECT * FROM tbl_project;
+DELETE FROM tbl_project;--done
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -177,6 +191,7 @@ CREATE TABLE tbl_project_programmer (
 	CONSTRAINT fk_project_id FOREIGN KEY(project_id) REFERENCES tbl_project(project_id),
 	CONSTRAINT fk_programmer_id FOREIGN KEY(programmer_id) REFERENCES tbl_programmer(programmer_id)
 );
+DELETE FROM tbl_project_programmer--done;
 
 
 SP_HELP tbl_project_programmer;
@@ -194,9 +209,69 @@ SELECT * FROM tbl_bug;
 SELECT * FROM tbl_code;
 SELECT * FROM tbl_image;
 
+-- code
 SELECT * FROM tbl_bug b
 JOIN tbl_code c ON
 b.bug_id = c.bug_id
 JOIN tbl_image i
 ON b.bug_id = i.bug_id
-WHERE bug_status = 0;
+JOIN tbl_source_control sc
+ON sc.bug_id = i.bug_id
+WHERE bug_status = 0
+AND b.bug_id = 102;
+
+SELECT * FROM tbl_project;
+SELECT * FROM tbl_bug;
+
+--to get all projects
+SELECT pr.project_id, pr.project_name FROM tbl_project pr
+JOIN tbl_project_programmer pp
+ON pr.project_id = pp.project_id
+JOIN tbl_programmer pro
+ON pp.programmer_id = pro.programmer_id
+WHERE pro.programmer_id = 1;
+
+SELECT pr.project_name FROM tbl_project pr JOIN tbl_project_programmer pp ON pr.project_id = pp.project_id JOIN tbl_programmer pro ON pp.programmer_id = pro.programmer_id WHERE pro.programmer_id = 1; 
+
+select * from tbl_image;
+select * from tbl_code;
+SELECT * FROM tbl_bug;
+delete from tbl_image where bug_id = 82;
+delete from tbl_bug where bug_id = 82;
+delete from tbl_code where bug_id = 82;
+select * from tbl_tester
+select * from tbl_source_control;
+select * from tbl_assign;
+select * from tbl_fixer;
+select * from tbl_programmer;
+
+--get all assigned used name
+SELECT p.full_name
+FROM tbl_programmer p
+JOIN tbl_assign a
+ON a.assign_to = p.programmer_id
+AND bug_id = 98;
+
+--who fixed a bug
+SELECT f.bug_id, f.fixed_date, p.full_name
+FROM tbl_programmer p
+JOIN tbl_fixer f
+ON p.programmer_id = f.fixed_by;
+
+--
+SELECT * FROM	tbl_assign;
+
+--get assigned bug
+SELECT * FROM tbl_programmer p
+JOIN tbl_assign a
+ON a.assign_to = p.programmer_id
+JOIN tbl_bug b
+ON b.bug_id = a.bug_id
+JOIN tbl_image i
+ON b.bug_id = i.bug_id
+JOIN tbl_source_control sc
+ON sc.bug_id = i.bug_id
+JOIN tbl_code c
+ON c.bug_id = b.bug_id
+WHERE a.assign_to = 1
+AND b.bug_status = '0'

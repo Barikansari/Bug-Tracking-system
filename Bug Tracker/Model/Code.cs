@@ -9,7 +9,7 @@ namespace Bug_Tracker.Model
     /// <summary>
     /// Model class for saving code
     /// </summary>
-    class Code
+    public class Code
     {
         public int CodeId { get; set; }
         public string CodeFilePath { get; set; }

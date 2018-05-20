@@ -9,14 +9,43 @@ using System.Threading.Tasks;
 
 namespace Bug_Tracker.DAO
 {
-    class BugDAO : GenericDAO<Bug>
+    public class BugDAO : GenericDAO<Bug>
     {
 
-        private SqlConnection conn = new DBConnection().GetConnection();
+        public SqlConnection conn = new DBConnection().GetConnection();
 
+        /// <summary>
+        /// used to delete bugs
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "DELETE FROM tbl_bug WHERE bug_id=@bugId";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bugId", id);
+
+                sql.ExecuteNonQuery();
+                trans.Commit();
+
+                return true;
+            }
+            catch (SqlException ex)
+            {
+                trans.Rollback();
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public List<Bug> GetAll()
@@ -24,11 +53,88 @@ namespace Bug_Tracker.DAO
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// returns bugs by its id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Bug GetById(int id)
         {
-            throw new NotImplementedException();
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+            Bug bug = null;
+            Code code = null;
+            Image image = null;
+            SourceControl sourceControl = null;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "SELECT * FROM tbl_bug b JOIN tbl_code c ON b.bug_id = c.bug_id JOIN tbl_image i ON b.bug_id = i.bug_id JOIN tbl_source_control sc ON sc.bug_id = i.bug_id WHERE bug_status = 0 AND b.bug_id = @id;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@id", id);
+
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        bug = new Bug();
+                        code = new Code();
+                        image = new Image();
+                        sourceControl = new SourceControl();
+
+                        bug.BugId = Convert.ToInt32(reader["bug_id"]);
+                        bug.ProjectName = Convert.ToString(reader["project_name"]);
+                        bug.ClassName = Convert.ToString(reader["class_name"]);
+                        bug.MethodName = Convert.ToString(reader["method_name"]);
+                        bug.StartLine = Convert.ToInt32(reader["start_line"]);
+                        bug.EndLine = Convert.ToInt32(reader["end_line"]);
+                        bug.ProgrammerId = Convert.ToInt32(reader["code_author"]);
+                        bug.Status = Convert.ToString(reader["bug_status"]);
+
+                        code.CodeId = Convert.ToInt32(reader["code_id"]);
+                        code.CodeFilePath = Convert.ToString(reader["code_file_path"]);
+                        code.CodeFileName = Convert.ToString(reader["code_file_name"]);
+                        code.ProgrammingLanguage = Convert.ToString(reader["programming_language"]);
+                        code.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        image.ImageId = Convert.ToInt32(reader["image_id"]);
+                        image.ImagePath = Convert.ToString(reader["image_path"]);
+                        image.ImageName = Convert.ToString(reader["image_name"]);
+                        image.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        sourceControl.SourceControlId = Convert.ToInt32(reader["source_control_id"]);
+                        sourceControl.Link = reader["link"].ToString();
+                        sourceControl.StartLine = Convert.ToInt32(reader["start_line"]);
+                        sourceControl.EndLine = Convert.ToInt32(reader["end_line"]);
+                        sourceControl.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        bug.SourceControl = sourceControl;
+                        bug.Images = image;
+                        bug.Codes = code;
+                    }
+                }
+
+            }
+            catch (SqlException ex)
+            {
+                conn.Close();
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                conn.Close();
+                throw new NullReferenceException(ex.Message);
+            }
+
+            return bug;
         }
 
+        /// <summary>
+        /// insert new bugs
+        /// </summary>
+        /// <param name="t"></param>
         public void Insert(Bug t)
         {
             conn.Open();
@@ -65,10 +171,41 @@ namespace Bug_Tracker.DAO
             }
 
         }
-
+        /// <summary>
+        /// update bugs
+        /// </summary>
+        /// <param name="t"></param>
         public void Update(Bug t)
         {
-            throw new NotImplementedException();
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "UPDATE tbl_bug SET project_name = @projectname, class_name = @classname, method_name = @methodname, start_line = @startline, end_line = @endline WHERE bug_id=@bug_id;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@projectname", t.ProjectName);
+                sql.Parameters.AddWithValue("@classname", t.ClassName);
+                sql.Parameters.AddWithValue("@methodname", t.MethodName);
+                sql.Parameters.AddWithValue("@startline", t.StartLine);
+                sql.Parameters.AddWithValue("@endline", t.EndLine);
+                sql.Parameters.AddWithValue("@bug_id", t.BugId);
+
+                sql.ExecuteNonQuery();
+
+                trans.Commit();
+            }
+            catch (SqlException ex)
+            {
+                trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         /// <summary>
@@ -83,12 +220,13 @@ namespace Bug_Tracker.DAO
             Bug bug = null;
             Code code = null;
             Image image = null;
+            SourceControl sourceControl = null;
 
             try
             {
                 SqlCommand sql = new SqlCommand(null, conn);
                 sql.Transaction = trans;
-                sql.CommandText = "SELECT * FROM tbl_bug b JOIN tbl_code c ON b.bug_id = c.bug_id JOIN tbl_image i ON b.bug_id = i.bug_id WHERE bug_status = 0;";
+                sql.CommandText = "SELECT * FROM tbl_bug b JOIN tbl_code c ON b.bug_id = c.bug_id JOIN tbl_image i ON b.bug_id = i.bug_id JOIN tbl_source_control sc ON sc.bug_id = i.bug_id WHERE bug_status = 0 ;";
                 sql.Prepare();
 
                 using (SqlDataReader reader = sql.ExecuteReader())
@@ -98,6 +236,7 @@ namespace Bug_Tracker.DAO
                         bug = new Bug();
                         code = new Code();
                         image = new Image();
+                        sourceControl = new SourceControl();
 
                         bug.BugId = Convert.ToInt32(reader["bug_id"]);
                         bug.ProjectName = Convert.ToString(reader["project_name"]);
@@ -119,25 +258,145 @@ namespace Bug_Tracker.DAO
                         image.ImageName = Convert.ToString(reader["image_name"]);
                         image.BugId = Convert.ToInt32(reader["bug_id"]);
 
+                        sourceControl.SourceControlId = Convert.ToInt32(reader["source_control_id"]);
+                        sourceControl.Link = reader["link"].ToString();
+                        sourceControl.StartLine = Convert.ToInt32(reader["start_line"]);
+                        sourceControl.EndLine = Convert.ToInt32(reader["end_line"]);
+                        sourceControl.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        bug.SourceControl = sourceControl;
+                        bug.Images = image;
+                        bug.Codes = code;
+                        bugList.Add(bug);
+                    }
+                }
+                
+            }
+            catch (SqlException ex)
+            {
+                conn.Close();
+                throw ex;
+            } catch(NullReferenceException ex)
+            {
+                conn.Close();
+                throw new NullReferenceException(ex.Message);
+            }
+
+            return bugList;
+        }
+
+        /// <summary>
+        /// returns programmer's related bug
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public List<Bug> GetAllBugsByProgrammerId(int id)
+        {
+            conn.Close();
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+            List<Bug> bugList = new List<Bug>();
+            Bug bug = null;
+            Code code = null;
+            Image image = null;
+            SourceControl sourceControl = null;
+            
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "SELECT* FROM tbl_programmer p JOIN tbl_assign a ON a.assign_to = p.programmer_id JOIN tbl_bug b ON b.bug_id = a.bug_id JOIN tbl_image i ON b.bug_id = i.bug_id JOIN tbl_source_control sc ON sc.bug_id = i.bug_id JOIN tbl_code c ON c.bug_id = b.bug_id WHERE a.assign_to = @id AND b.bug_status = '0';";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@id", id);
+
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        bug = new Bug();
+                        code = new Code();
+                        image = new Image();
+                        sourceControl = new SourceControl();
+
+                        bug.BugId = Convert.ToInt32(reader["bug_id"]);
+                        bug.ProjectName = Convert.ToString(reader["project_name"]);
+                        bug.ClassName = Convert.ToString(reader["class_name"]);
+                        bug.MethodName = Convert.ToString(reader["method_name"]);
+                        bug.StartLine = Convert.ToInt32(reader["start_line"]);
+                        bug.EndLine = Convert.ToInt32(reader["end_line"]);
+                        bug.ProgrammerId = Convert.ToInt32(reader["code_author"]);
+                        bug.Status = Convert.ToString(reader["bug_status"]);
+
+                        code.CodeId = Convert.ToInt32(reader["code_id"]);
+                        code.CodeFilePath = Convert.ToString(reader["code_file_path"]);
+                        code.CodeFileName = Convert.ToString(reader["code_file_name"]);
+                        code.ProgrammingLanguage = Convert.ToString(reader["programming_language"]);
+                        code.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        image.ImageId = Convert.ToInt32(reader["image_id"]);
+                        image.ImagePath = Convert.ToString(reader["image_path"]);
+                        image.ImageName = Convert.ToString(reader["image_name"]);
+                        image.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        sourceControl.SourceControlId = Convert.ToInt32(reader["source_control_id"]);
+                        sourceControl.Link = reader["link"].ToString();
+                        sourceControl.StartLine = Convert.ToInt32(reader["start_line"]);
+                        sourceControl.EndLine = Convert.ToInt32(reader["end_line"]);
+                        sourceControl.BugId = Convert.ToInt32(reader["bug_id"]);
+
+                        bug.SourceControl = sourceControl;
                         bug.Images = image;
                         bug.Codes = code;
                         bugList.Add(bug);
                     }
                 }
 
+            }
+            catch (SqlException ex)
+            {
+                conn.Close();
+                throw ex;
+            }
+            catch (NullReferenceException ex)
+            {
+                conn.Close();
+                throw new NullReferenceException(ex.Message);
+            }
+
+            return bugList;
+        }
+
+        /// <summary>
+        /// update bug status
+        /// </summary>
+        /// <param name="bugId"></param>
+        public void BugFixed(int bugId)
+        {
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "UPDATE tbl_bug SET bug_status = @bug_status WHERE bug_id=@bug_id;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bug_status", "1");
+                sql.Parameters.AddWithValue("@bug_id", bugId);
+
+                sql.ExecuteNonQuery();
+
                 trans.Commit();
             }
             catch (SqlException ex)
             {
                 trans.Rollback();
-                throw ex;
-            } catch(NullReferenceException ex)
-            {
-                trans.Rollback();
-                throw new NullReferenceException(ex.Message);
+                throw new Exception(ex.Message);
             }
-
-            return bugList;
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }

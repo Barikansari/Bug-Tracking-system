@@ -36,6 +36,7 @@
             this.addUserToComapnyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bugStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -49,6 +50,7 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.textBoxUpdate = new System.Windows.Forms.TextBox();
+            this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -56,27 +58,31 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 29);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 38);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(90, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Add project";
             // 
             // txtProjectName
             // 
-            this.txtProjectName.Location = new System.Drawing.Point(99, 29);
+            this.txtProjectName.Location = new System.Drawing.Point(98, 38);
             this.txtProjectName.Name = "txtProjectName";
             this.txtProjectName.Size = new System.Drawing.Size(221, 20);
             this.txtProjectName.TabIndex = 1;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(343, 29);
+            this.button1.BackColor = System.Drawing.Color.Blue;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.ForeColor = System.Drawing.SystemColors.Window;
+            this.button1.Location = new System.Drawing.Point(342, 38);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Add";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // menuStrip1
@@ -85,7 +91,7 @@
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1048, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,7 +100,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addUserToComapnyToolStripMenuItem,
             this.logoutToolStripMenuItem,
-            this.exitToolStripMenuItem});
+            this.exitToolStripMenuItem,
+            this.bugStatusToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "File";
@@ -123,10 +130,17 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // bugStatusToolStripMenuItem
+            // 
+            this.bugStatusToolStripMenuItem.Name = "bugStatusToolStripMenuItem";
+            this.bugStatusToolStripMenuItem.Size = new System.Drawing.Size(230, 22);
+            this.bugStatusToolStripMenuItem.Text = "Bug Status";
+            this.bugStatusToolStripMenuItem.Click += new System.EventHandler(this.bugStatusToolStripMenuItem_Click);
+            // 
             // listView1
             // 
             this.listView1.FormattingEnabled = true;
-            this.listView1.Location = new System.Drawing.Point(12, 133);
+            this.listView1.Location = new System.Drawing.Point(15, 172);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(238, 303);
             this.listView1.TabIndex = 5;
@@ -136,16 +150,17 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(269, 67);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(459, 67);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(104, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Programmers";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(376, 64);
+            this.comboBox1.Location = new System.Drawing.Point(566, 64);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(173, 21);
             this.comboBox1.TabIndex = 7;
@@ -155,12 +170,15 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(640, 67);
+            this.button2.BackColor = System.Drawing.Color.Blue;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.ForeColor = System.Drawing.SystemColors.Window;
+            this.button2.Location = new System.Drawing.Point(830, 67);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(130, 23);
             this.button2.TabIndex = 8;
             this.button2.Text = "Add new programmer";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
@@ -168,27 +186,31 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Location = new System.Drawing.Point(272, 123);
+            this.panel1.Location = new System.Drawing.Point(463, 156);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(516, 313);
             this.panel1.TabIndex = 9;
             // 
             // button6
             // 
+            this.button6.BackColor = System.Drawing.Color.Blue;
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.ForeColor = System.Drawing.SystemColors.Window;
             this.button6.Location = new System.Drawing.Point(253, 63);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(75, 23);
             this.button6.TabIndex = 12;
             this.button6.Text = "DELETE";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(18, 19);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(164, 13);
+            this.label3.Size = new System.Drawing.Size(245, 20);
             this.label3.TabIndex = 1;
             this.label3.Text = "Users associated with this project";
             // 
@@ -203,37 +225,46 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 62);
+            this.button3.BackColor = System.Drawing.Color.Blue;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.ForeColor = System.Drawing.SystemColors.Window;
+            this.button3.Location = new System.Drawing.Point(15, 101);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
             this.button3.Text = "DELETE";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(115, 62);
+            this.button4.BackColor = System.Drawing.Color.Blue;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button4.ForeColor = System.Drawing.SystemColors.Window;
+            this.button4.Location = new System.Drawing.Point(118, 101);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 11;
             this.button4.Text = "UPDATE";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(555, 62);
+            this.btnAdd.BackColor = System.Drawing.Color.Blue;
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.ForeColor = System.Drawing.SystemColors.Window;
+            this.btnAdd.Location = new System.Drawing.Point(745, 62);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(45, 23);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // textBoxUpdate
             // 
-            this.textBoxUpdate.Location = new System.Drawing.Point(15, 92);
+            this.textBoxUpdate.Location = new System.Drawing.Point(18, 131);
             this.textBoxUpdate.Name = "textBoxUpdate";
             this.textBoxUpdate.Size = new System.Drawing.Size(235, 20);
             this.textBoxUpdate.TabIndex = 13;
@@ -242,8 +273,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(1048, 481);
             this.Controls.Add(this.textBoxUpdate);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.button4);
@@ -293,5 +324,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.TextBox textBoxUpdate;
+        private System.Windows.Forms.ToolStripMenuItem bugStatusToolStripMenuItem;
+        private System.ComponentModel.BackgroundWorker backgroundWorker2;
     }
 }

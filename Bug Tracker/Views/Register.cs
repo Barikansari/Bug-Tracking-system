@@ -32,7 +32,7 @@ namespace Bug_Tracker.Views
 
         private void button4_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Dispose();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -83,5 +83,10 @@ namespace Bug_Tracker.Views
                 }
                 }
             }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

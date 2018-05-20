@@ -1,0 +1,180 @@
+﻿using Bug_Tracker.Model;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bug_Tracker.DAO
+{
+    class AssignDAO : GenericDAO<Assign>
+    {
+        private SqlConnection conn = new DBConnection().GetConnection();
+        public bool Delete(int id)
+        {
+            conn.Open();
+            Assign p = null;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "DELETE FROM tbl_assign WHERE bug_id=@bug_id;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bug_id", id);
+
+                sql.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Assign> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Assign GetById(int id)
+        {
+            conn.Open();
+            Assign p = null;
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "SELECT * FROM tbl_assign WHERE bug_id=@bug_id;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bug_id", id);
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        p = new Assign
+                        {
+                            AssignDate = DateTime.Parse(reader["assign_date"].ToString()),
+                            Description = reader["descriptions"].ToString(),
+                            AssignBy = Convert.ToInt32(reader["assign_by"]),
+                            AssignTo = Convert.ToInt32(reader["assign_to"]),
+                            BugId = Convert.ToInt32(reader["bug_id"])
+                        };
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return p;
+        }
+
+        public void Insert(Assign t)
+        {
+            conn.Open();
+            SqlTransaction trans = conn.BeginTransaction();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.Transaction = trans;
+                sql.CommandText = "INSERT INTO tbl_assign VALUES(@assign_date, @descriptions, @assign_by, @assign_to, @bug_id)";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@assign_date", DateTime.Now);
+                sql.Parameters.AddWithValue("@descriptions", t.Description);
+                sql.Parameters.AddWithValue("@assign_by", t.AssignBy);
+                sql.Parameters.AddWithValue("@assign_to", t.AssignTo);
+                sql.Parameters.AddWithValue("@bug_id", t.BugId);
+
+                sql.ExecuteNonQuery();
+
+                trans.Commit();
+            }
+            catch (SqlException ex)
+            {
+                trans.Rollback();
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public void Update(Assign t)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<string> GetAllAssignedUsersByBugId(int bugId)
+        {
+            conn.Open();
+            List<string> list = new List<string>();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "SELECT p.full_name FROM tbl_programmer p JOIN tbl_assign a ON a.assign_to = p.programmer_id AND bug_id = @bugId";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bugId", bugId);
+                using (SqlDataReader reader = sql.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        list.Add(reader[0].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            return list;
+        }
+
+        public bool RemoveAssignedUser(int bugId, int userId)
+        {
+            conn.Open();
+
+            try
+            {
+                SqlCommand sql = new SqlCommand(null, conn);
+                sql.CommandText = "DELETE FROM tbl_assign WHERE bug_id=@bug_id AND assign_to = @assignTo;";
+                sql.Prepare();
+                sql.Parameters.AddWithValue("@bug_id", bugId);
+                sql.Parameters.AddWithValue("@bug_id", userId);
+
+                sql.ExecuteNonQuery();
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+    }
+}

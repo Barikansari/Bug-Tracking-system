@@ -48,6 +48,7 @@ namespace Bug_Tracker.Views
                     if (new ProgrammerDAO().IsLogin(username, password) > 0)
                     {
                         userId = new ProgrammerDAO().IsLogin(username, password);
+                        Program.isTester = false;
                         this.Hide();
                         new Main().Show();
                     } else
@@ -60,8 +61,9 @@ namespace Bug_Tracker.Views
                     if (new TesterDAO().IsLogin(username, password) > 0)
                     {
                         userId = new TesterDAO().IsLogin(username, password);
+                        Program.isTester = true;
                         this.Hide();
-                        new Main().Show();
+                        new TesterDashboard().Show();
                     }
                     else
                     {
@@ -93,12 +95,7 @@ namespace Bug_Tracker.Views
 
         }
 
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click_1(object sender, EventArgs e)
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

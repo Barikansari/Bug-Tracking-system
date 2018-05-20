@@ -9,7 +9,7 @@ namespace Bug_Tracker.Model
     /// <summary>
     /// Model class for saving information about programmer
     /// </summary>
-    class Programmer
+    public class Programmer
     {
         public int? ProgrammerId { get; set; }
         public string FullName { get; set; }

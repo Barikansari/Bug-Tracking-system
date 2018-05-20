@@ -1,6 +1,8 @@
 ﻿using Bug_Tracker.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Bug_Tracker.Views
@@ -11,7 +13,7 @@ namespace Bug_Tracker.Views
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        int rowId = 0;
+        public static int rowId = 0;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -38,13 +40,14 @@ namespace Bug_Tracker.Views
             this.label1 = new System.Windows.Forms.Label();
             this.panelAssigned = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelBugs.SuspendLayout();
             this.panelAssigned.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelBugs
             // 
-            this.panelBugs.BackColor = System.Drawing.Color.MediumAquamarine;
+            this.panelBugs.BackColor = System.Drawing.SystemColors.Window;
             this.panelBugs.Controls.Add(this.label1);
             this.panelBugs.ForeColor = System.Drawing.SystemColors.Window;
             this.panelBugs.Location = new System.Drawing.Point(2, 1);
@@ -56,6 +59,7 @@ namespace Bug_Tracker.Views
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label1.Location = new System.Drawing.Point(177, 17);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 25);
@@ -64,7 +68,8 @@ namespace Bug_Tracker.Views
             // 
             // panelAssigned
             // 
-            this.panelAssigned.BackColor = System.Drawing.Color.SaddleBrown;
+            this.panelAssigned.BackColor = System.Drawing.SystemColors.Window;
+            this.panelAssigned.Controls.Add(this.label3);
             this.panelAssigned.Controls.Add(this.label2);
             this.panelAssigned.ForeColor = System.Drawing.SystemColors.Window;
             this.panelAssigned.Location = new System.Drawing.Point(569, 1);
@@ -76,11 +81,23 @@ namespace Bug_Tracker.Views
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
             this.label2.Location = new System.Drawing.Point(188, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 25);
+            this.label2.Size = new System.Drawing.Size(217, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Assigned work to yo";
+            this.label2.Text = "Assigned work to you";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label3.Location = new System.Drawing.Point(99, 129);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(371, 24);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Hurrey! there is no any work assigned to yo";
             // 
             // Bugs
             // 
@@ -106,94 +123,98 @@ namespace Bug_Tracker.Views
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panelAssigned;
         private System.Windows.Forms.Label label2;
+        private Label label3;
 
 
-        private void loopPanel(List<Bug> list)
-        {
-            
-             int x = 56;
-             foreach (var bug in list)
-             {//56
-                //int x = 0;
-                Panel panel = new Panel();
-                panel.Text = bug.BugId.ToString();
-                this.panelBugs.Controls.Add(panel);
+        //private void loopPanel(List<Bug> list)
+        //{
 
-                Label lblProject = new Label();
-                Label lblClass = new Label();
-                Label lblMethod = new Label();
-                PictureBox pictureBox = new PictureBox();
+        //     int x = 56;
+        //     foreach (var bug in list)
+        //     {//56
+        //        //int x = 0;
+        //        Panel panel = new Panel();
+        //        panel.Text = bug.BugId.ToString();
+        //        this.panelBugs.Controls.Add(panel);
 
-                panel.Click += new EventHandler(toolStripClick);
+        //        Label lblProject = new Label();
+        //        Label lblClass = new Label();
+        //        Label lblMethod = new Label();
+        //        PictureBox pictureBox = new PictureBox();
 
-                void toolStripClick(object sender, EventArgs e)
-                {
-                    rowId = Convert.ToInt32(panel.Text);
-                }
+        //        panel.Click += new EventHandler(toolStripClick);
 
-                //
-                //panel
-                //
-                panel.BackColor = System.Drawing.Color.DarkOliveGreen;
-                panel.Controls.Add(lblMethod);
-                panel.Controls.Add(lblClass);
-                panel.Controls.Add(lblProject);
-                panel.Controls.Add(pictureBox);
-                panel.Location = new System.Drawing.Point(10, x);
-                x += 105;
-                panel.Name = panel + bug.BugId.ToString();
-                panel.Size = new System.Drawing.Size(535, 100);
-                panel.TabIndex = 1;
-                //panel.Paint += new System.Windows.Forms.PaintEventHandler(panel_Paint);
-                panel.SuspendLayout();
-                //
-                //lblProject
-                //
-                lblProject.AutoSize = true;
-                lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                lblProject.Location = new System.Drawing.Point(3, 3);
-                lblProject.Name = lblProject + bug.BugId.ToString();
-                lblProject.Size = new System.Drawing.Size(50, 16);
-                lblProject.TabIndex = 1;
-                lblProject.Text = "Project: "+ bug.ProjectName;
+        //        void toolStripClick(object sender, EventArgs e)
+        //        {
+        //            rowId = Convert.ToInt32(panel.Text);
+        //        }
 
-                //
-                //lblClass
-                //
-                lblClass.AutoSize = true;
-                lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                lblClass.Location = new System.Drawing.Point(3, 34);
-                lblClass.Name = lblClass + bug.BugId.ToString();
-                lblClass.Size = new System.Drawing.Size(42, 16);
-                lblClass.TabIndex = 2;
-                lblClass.Text = "Class: " + bug.ClassName;
+        //        //
+        //        //panel
+        //        //
+        //        panel.BackColor = System.Drawing.Color.DarkOliveGreen;
+        //        panel.Controls.Add(lblMethod);
+        //        panel.Controls.Add(lblClass);
+        //        panel.Controls.Add(lblProject);
+        //        panel.Controls.Add(pictureBox);
+        //        panel.Location = new System.Drawing.Point(10, x);
+        //        x += 105;
+        //        panel.Name = panel + bug.BugId.ToString();
+        //        panel.Size = new System.Drawing.Size(535, 100);
+        //        panel.TabIndex = 1;
+        //        //panel.Paint += new System.Windows.Forms.PaintEventHandler(panel_Paint);
+        //        panel.SuspendLayout();
+        //        //
+        //        //lblProject
+        //        //
+        //        lblProject.AutoSize = true;
+        //        lblProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        //        lblProject.Location = new System.Drawing.Point(3, 3);
+        //        lblProject.Name = lblProject + bug.BugId.ToString();
+        //        lblProject.Size = new System.Drawing.Size(50, 16);
+        //        lblProject.TabIndex = 1;
+        //        lblProject.Text = "Project: "+ bug.ProjectName;
 
-                //
-                //lblMethod
-                //
-                lblMethod.AutoSize = true;
-                lblMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                lblMethod.Location = new System.Drawing.Point(4, 71);
-                lblMethod.Name = lblMethod + bug.BugId.ToString();
-                lblMethod.Size = new System.Drawing.Size(53, 16);
-                lblMethod.TabIndex = 3;
-                lblMethod.Text = "Method: " + bug.MethodName;
+        //        //
+        //        //lblClass
+        //        //
+        //        lblClass.AutoSize = true;
+        //        lblClass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        //        lblClass.Location = new System.Drawing.Point(3, 34);
+        //        lblClass.Name = lblClass + bug.BugId.ToString();
+        //        lblClass.Size = new System.Drawing.Size(42, 16);
+        //        lblClass.TabIndex = 2;
+        //        lblClass.Text = "Class: " + bug.ClassName;
 
-                //
-                //pictureBox
-                //
-                pictureBox.Location = new System.Drawing.Point(391, 3);
-                pictureBox.Name = pictureBox + bug.BugId.ToString();
-                pictureBox.Size = new System.Drawing.Size(141, 94);
-                pictureBox.TabIndex = 0;
-                pictureBox.TabStop = false;
-                ((System.ComponentModel.ISupportInitialize)(pictureBox)).BeginInit();
+        //        //
+        //        //lblMethod
+        //        //
+        //        lblMethod.AutoSize = true;
+        //        lblMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        //        lblMethod.Location = new System.Drawing.Point(4, 71);
+        //        lblMethod.Name = lblMethod + bug.BugId.ToString();
+        //        lblMethod.Size = new System.Drawing.Size(53, 16);
+        //        lblMethod.TabIndex = 3;
+        //        lblMethod.Text = "Method: " + bug.MethodName;
 
-                panel.ResumeLayout(false);
-                panel.PerformLayout();
-                ((System.ComponentModel.ISupportInitialize)(pictureBox)).EndInit();
-            }
-        }
+        //        //
+        //        //pictureBox
+        //        //
+        //        pictureBox.Location = new System.Drawing.Point(391, 3);
+        //        pictureBox.Name = pictureBox + bug.BugId.ToString();
+        //        pictureBox.Size = new System.Drawing.Size(141, 94);
+        //        pictureBox.TabIndex = 0;
+        //        pictureBox.TabStop = false;
+        //        ((System.ComponentModel.ISupportInitialize)(pictureBox)).BeginInit();
+
+        //        pictureBox.Image = new Bitmap(Path.Combine(bug.Images.ImagePath +"/"  , bug.Images.ImageName));
+        //        pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+
+        //        panel.ResumeLayout(false);
+        //        panel.PerformLayout();
+        //        ((System.ComponentModel.ISupportInitialize)(pictureBox)).EndInit();
+        //    }
+        //}
 
     }
 }

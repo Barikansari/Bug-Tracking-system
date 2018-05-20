@@ -9,7 +9,7 @@ namespace Bug_Tracker.Model
     /// <summary>
     /// Model class for saving information about tester
     /// </summary>
-    class Tester
+    public class Tester
     {
         public int TesterId { get; set; }
         public string FullName { get; set; }

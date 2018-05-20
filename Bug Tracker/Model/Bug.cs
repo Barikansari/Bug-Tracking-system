@@ -9,7 +9,7 @@ namespace Bug_Tracker.Model
     /// <summary>
     /// Model class used for tracking bug
     /// </summary>
-    class Bug
+    public class Bug
     {
         public int BugId { get; set; }
         public string ProjectName { get; set; }
@@ -21,5 +21,6 @@ namespace Bug_Tracker.Model
         public string Status { get; set; }
         public Image Images { get; set; }
         public Code Codes { get; set; }
+        public SourceControl SourceControl { get; set; }
     }
 }

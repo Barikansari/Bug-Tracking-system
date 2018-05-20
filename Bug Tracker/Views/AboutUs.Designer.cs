@@ -122,6 +122,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -133,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.Name = "AboutUs";
             this.Text = "AboutUs";
+            this.Load += new System.EventHandler(this.AboutUs_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -9,7 +9,7 @@ namespace Bug_Tracker.Model
     /// <summary>
     /// Model to save bug history
     /// </summary>
-    class BugHistory
+    public class BugHistory
     {
         public int BugHistoryId { get; set; }
         public string Description { get; set; }

@@ -9,9 +9,9 @@ using Bug_Tracker.Model;
 
 namespace Bug_Tracker.DAO
 {
-    class ProgrammerDAO : GenericDAO<Programmer>
+    public class ProgrammerDAO : GenericDAO<Programmer>
     {
-        private SqlConnection conn = new DBConnection().GetConnection();
+        public SqlConnection conn = new DBConnection().GetConnection();
 
         public bool Delete(int id)
         {

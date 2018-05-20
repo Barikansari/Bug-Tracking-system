@@ -22,6 +22,7 @@ namespace Bug_Tracker.Views
             InitializeComponent();
             GetAllProgrammers();
             btnAdd.Visible = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -242,6 +243,11 @@ namespace Bug_Tracker.Views
             bool res = projectProgrammer.Delete(programmerId);
             listBox1.Items.Clear();
             GetAllProgrammer();
+        }
+
+        private void bugStatusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new BugStatus().Show();
         }
     }
 }

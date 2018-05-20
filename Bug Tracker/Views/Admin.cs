@@ -16,11 +16,13 @@ namespace Bug_Tracker.Views
         public Admin()
         {
             InitializeComponent();
+            txtPassword.PasswordChar = '*';
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Dispose();
             new AdminRegister().Show();
         }
 
@@ -49,12 +51,17 @@ namespace Bug_Tracker.Views
             }
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Admin_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void Admin_Load(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

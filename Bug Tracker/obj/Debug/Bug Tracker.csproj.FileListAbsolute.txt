@@ -10,34 +10,41 @@ C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug T
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminDashboard.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminRegister.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Bugs.resources
+C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.BugStatus.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Dashboard.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Login.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Main.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Register.resources
+C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.SymptonsAndAssign.resources
+C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.TesterDashboard.resources
+C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.UpdateBug.resources
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.GenerateResource.cache
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CoreCompileInputs.cache
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CopyComplete
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.exe
 C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.pdb
-C:\Users\Nishan Dhungana\documents\visual studio 2017\Projects\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csprojResolveAssemblyReference.cache
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.exe.config
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.exe
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.pdb
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\bin\Debug\FastColoredTextBox.xml
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csprojResolveAssemblyReference.cache
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Form1.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Properties.Resources.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AboutUs.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Admin.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminDashboard.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminRegister.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Bugs.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Dashboard.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Login.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Main.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Register.resources
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.GenerateResource.cache
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CoreCompileInputs.cache
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CopyComplete
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.exe
-C:\Users\Barik ansari\Desktop\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.pdb
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.exe.config
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.exe
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\bin\Debug\Bug Tracker.pdb
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\bin\Debug\FastColoredTextBox.xml
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csprojResolveAssemblyReference.cache
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Form1.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Properties.Resources.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AboutUs.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Admin.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminDashboard.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.AdminRegister.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Bugs.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.BugStatus.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Dashboard.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Login.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Main.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.Register.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.SymptonsAndAssign.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.TesterDashboard.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug_Tracker.Views.UpdateBug.resources
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.GenerateResource.cache
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CoreCompileInputs.cache
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.csproj.CopyComplete
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.exe
+C:\Users\Barik ansari\Desktop\barik bug\Bug Tracker\Bug Tracker\obj\Debug\Bug Tracker.pdb

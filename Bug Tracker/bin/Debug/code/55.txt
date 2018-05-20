@@ -1,0 +1,18 @@
+
+
+ public partial class UpdateBug : Form
+    {
+        private string imageName;
+        private string ImageName;
+        private string programminLanguage;
+        private string currentImageName;
+        private string codeFileName;
+
+        public static int bugId = 0;
+        private int codeId = 0;
+        private int imageId = 0;
+        private bool disableButtons = false;
+
+        BugDAO bugDAO = new BugDAO();
+        Bug bug = null;
+    }

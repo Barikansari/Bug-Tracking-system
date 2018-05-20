@@ -16,6 +16,7 @@ namespace Bug_Tracker.Views
         public AdminRegister()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,7 +44,7 @@ namespace Bug_Tracker.Views
                     adminDAO.Insert(admin);
 
                     MessageBox.Show("Account created");
-                    this.Hide();
+                    this.Dispose();
                     new Admin().Show();
                 }
                 catch (Exception ex)
@@ -52,6 +53,12 @@ namespace Bug_Tracker.Views
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            new Admin().Show();
         }
 
         private void AdminRegister_Load(object sender, EventArgs e)
